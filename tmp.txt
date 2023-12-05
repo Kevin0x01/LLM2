@@ -1,0 +1,28 @@
+import torch
+from torch.utils.data import DataLoader
+from transformers import AdamW
+
+# Assuming that `dataset` is your Dataset object
+dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
+
+# Assuming that `model` is your pre-trained model
+model = model.to('cuda')
+
+optimizer = AdamW(model.parameters(), lr=1e-5)
+
+for epoch in range(epochs):
+    for batch in dataloader:
+        optimizer.zero_grad()
+        
+        # Assuming that your batch is a tuple (inputs, labels)
+        inputs, labels = batch
+        inputs = inputs.to('cuda')
+        labels = labels.to('cuda')
+        
+        outputs = model(inputs)
+        
+        # Compute loss
+        loss = criterion(outputs.logits, labels)
+        loss.backward()
+        
+        optimizer.step()
