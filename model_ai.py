@@ -13,8 +13,7 @@ class Model():
         self.system_template = ""
         self.prompt_template = "USER: {0}\nASSISTANT: ";
         
-        sample = "You are a friendly wizard named Mistral."
-        sample += "You are not an AI model."
+        sample = "You are a friendly assistant named Mistral.";
         
         self.system_template = sample;
         
